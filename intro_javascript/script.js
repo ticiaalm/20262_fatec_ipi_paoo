@@ -1,3 +1,72 @@
+/* Objetos JavaScript */
+/* Objeto JSON (JavaScript Object Notation) */
+
+/* Uma calculadora realiza as operações de soma e subtração */
+/* const calculadora = {
+    somar: function(a, b) {
+        return a + b
+    },
+    subtrair: (a, b) => a - b
+}
+console.log(calculadora.somar(2, 3))
+console.log(calculadora.subtrair(5, 4)) */
+
+/* Uma concessionária que tem CNPJ e endereço.
+Endereço tem rua, bairro e número.
+A concessionária tem uma coleção de veículos.
+Cada veículo tem marca, modelo e ano de fabricação */
+/* let concessionaria = {
+    cnpj: "00.000.000/0001-91",
+    endereco: {
+        rua: "A",
+        bairro: "Jardim SP",
+        numero: 10
+    },
+    veiculo: [
+        {
+            marca: "Volkswagen",
+            modelo: "Polo",
+            ano: 1972
+        }
+    ]
+}
+for (let veiculo of concessionaria.veiculo) {
+    console.log('Marca: ' + (veiculo.marca));
+    console.log('Modelo: ' + (veiculo.modelo));
+    console.log('Ano de Fabricação: ' + (veiculo.ano));
+} */
+
+/* console.log('CNPJ: '+ concessionaria.cnpj)
+console.log('Rua: ' + concessionaria.endereco.rua)
+console.log('Bairro: ' + concessionaria.endereco.bairro)
+console.log('Número: ' + concessionaria.endereco.numero)
+console.log('Marca: ' + concessionaria.veiculo.marca)
+console.log('Modelo: ' + concessionaria.veiculo.modelo)
+console.log('Ano: ' + concessionaria.veiculo.ano) */
+
+/* Uma pessoa se chama Maria, tem 21 anos e mora na rua B, número 20 */
+/* let pessoa = {
+    nome: "Maria",
+    idade: 21,
+    endereco: {
+        rua: "B",
+        numero: 20
+    }
+}
+console.log(pessoa.nome)
+console.log(pessoa.idade)
+console.log('Rua: ' + pessoa.endereco.rua)
+console.log('Numero: ' + pessoa.endereco.numero) */
+
+/* Uma pessoa se chama João e tem 17 anos */
+/* let pessoa = {
+    nome: "João", // par chave/valor
+    idade: 17
+}
+console.log(pessoa.nome)
+console.log(pessoa['idade'])
+console.log(pessoa.idade) */
+
 /* Closure
  function eAgora() {
     let cont = 1
