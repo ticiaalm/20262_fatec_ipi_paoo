@@ -1,19 +1,66 @@
+/* Promise */
+/* 1 + 2 + 3 + ... + (n-2) + (n-1) + n */
+/* const calculoRapidinho = (n) => {
+    return n >= 0 ? Promise.resolve((n / 2) * (n + 1)) : Promise.reject("Apenas positivos")
+}
+calculoRapidinho(10)
+.then(res => console.log(`Resultado: ${res}`))
+.catch(erro => console.log(`Erro: ${erro}`)) */
+
+/* calculoRapidinho(100).then((res) => {
+    console.log(res)
+})
+console.log('Terminando script principal...') */
+
+/* function calculoDemorado(n) {
+    return new Promise(function(resolve, reject) {
+        let res = 0
+        for (let i = 1; i <= n; i++) {
+            res += i
+        }
+        resolve(res)
+    })
+}
+// Construção then/catch
+calculoDemorado(100).then((resultado) => {console.log(resultado)})
+const auxiliar = calculoDemorado(100)
+auxiliar.then(function(res) {
+    console.log(res)
+}) */
+
 /* CPU-Bound: Dominada por cálculos e contas (um loop que soma de 1 a 100) */
 /* IO-Bound: Dominada por operações de entrada e saída (acesso a arquivos, requisições HTTP...)*/
-const fs = require('fs') // file system
+
+/* const fs = require('fs') // file system
+console.log("A")
+// Inferno de callbacks
 const abrirArquivo = function(nomeArquivo) {
-    /* Definir uma função callback */
+    Definir uma função callback 
     const exibirConteudo = function(erro, conteudo) {
         if (erro) {
             console.log(`Deu erro: ${erro}`)
         } else {
             console.log(conteudo.toString())
+            const dobro = + conteudo.toString() * 2
+            const finalizar = function(erro) {
+                if (erro) {
+                    console.log('Erro ao salvar o dobro')
+                } else {
+                    console.log('Salvou o dobro')
+                }
+                console.log("F")
+            }
+            fs.writeFile('dobro.txt', dobro.toString(), finalizar)
+            console.log("E")
         }
+        console.log("D")
     }
-    /* Chamar a função de leitura do arquivo do módulo fs, entregando a callback como parâmetro */
+    // Chamar a função de leitura do arquivo do módulo fs, entregando a callback como parâmetro
     fs.readFile(nomeArquivo, exibirConteudo)
+    console.log("C")
 }
 abrirArquivo("arquivo.txt")
+console.log("B") */
 
 /* console.log('Script principal começou...')
 setTimeout(() => {
