@@ -1,3 +1,52 @@
+/* CPU-Bound: Dominada por cálculos e contas (um loop que soma de 1 a 100) */
+/* IO-Bound: Dominada por operações de entrada e saída (acesso a arquivos, requisições HTTP...)*/
+const fs = require('fs') // file system
+const abrirArquivo = function(nomeArquivo) {
+    /* Definir uma função callback */
+    const exibirConteudo = function(erro, conteudo) {
+        if (erro) {
+            console.log(`Deu erro: ${erro}`)
+        } else {
+            console.log(conteudo.toString())
+        }
+    }
+    /* Chamar a função de leitura do arquivo do módulo fs, entregando a callback como parâmetro */
+    fs.readFile(nomeArquivo, exibirConteudo)
+}
+abrirArquivo("arquivo.txt")
+
+/* console.log('Script principal começou...')
+setTimeout(() => {
+    console.log('Dentro da timeout')
+}, 0)
+const data = new Data().getTime() + 10000
+while(new Date().getTime() <= data);
+console.log('Script principal terminou...') */
+
+/* function demorada() {
+    const atualMais2Segundos = new Date(0).getTime() + 2000
+    while(new Date().getTime() <= atualMais2Segundos);
+    const d = 8 + 4
+    return d
+}
+const a = 2 + 3
+const b = 5 + 9
+// const d = demorada()
+setTimeout(() => {
+    const d = demorada()
+    console.log(`d: ${d}`)
+}, 500)
+const e = 2 + a + b
+console.log(`e: ${e}`) */
+
+/* const a = 2 + 7
+const b = 5
+console.log(a + b) */
+
+/* console.log('Eu primeiro...')
+console.log('Agora eu')
+console.log('Sempre serei a última... :(') */
+
 /* Objetos JavaScript */
 /* Objeto JSON (JavaScript Object Notation) */
 
