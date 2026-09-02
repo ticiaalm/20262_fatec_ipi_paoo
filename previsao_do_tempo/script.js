@@ -1,6 +1,5 @@
 // Exibir todas as previsões do tempo para Itu usando Async/Await
 
-
 // require('dotenv').config()
 /* const axios = require('axios')
 const appid = process.env.APPID
