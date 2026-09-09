@@ -36,4 +36,4 @@ app.get("/lembretes", function(req, res) {
     res.json(lembretes)
 })
 const port = 4000
-app.listen(port, () => console.log(`Lembretes. ${port}.`))
+app.listen(port, () => console.log(`Lembretes na porta ${port}.`))
