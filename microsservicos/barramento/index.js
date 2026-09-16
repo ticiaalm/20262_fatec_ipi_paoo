@@ -7,6 +7,7 @@ app.use(express.json())
 app.post('/eventos', (req, res) => {
     /* Pegar o corpo da requisição */
     const evento = req.body
+    console.log(evento)
     /* Enviar via post para todos os microsserviços */
     axios.post('http://localhost:4000/eventos', evento)
     axios.post('http://localhost:5000/eventos', evento)

@@ -1,3 +1,4 @@
+const axios = require('axios')
 const express = require('express')
 const app = express()
 /* Middleware: Fica entre o envio da req e res */
@@ -21,19 +22,32 @@ const lembretes = {}
 /* Criar um lembrete */
 /* POST /lembretes */
 /* Endpoint: uma tripla: método do protocolo HTTP, padrão de acesso e funcionalidade */
-app.post("/lembretes", (req, res) => {
+app.post('/lembretes', async (req, res) => {
     /* { texto: "Fazer café" } */
     const texto = req.body.texto
-    lembretes[id] = {
+    const lembrete = {
         id: id,
         texto: texto
     }
+    lembretes[id] = lembrete
+    await axios.post('http://localhost:10000/eventos', {
+        tipo: 'LembreteCriado',
+        dados: lembrete
+    })
     id++
     res.json({mensagem: 'ok'})
 })
+
 /* GET /lembretes usando uma função regular (function) */
-app.get("/lembretes", function(req, res) {
+app.get('/lembretes', function(req, res) {
     res.json(lembretes)
 })
+
+app.post('/eventos', (req, res) => {
+    const evento = req.body
+    console.log(evento)
+    res.end()
+})
+
 const port = 4000
 app.listen(port, () => console.log(`Lembretes na porta ${port}.`))
