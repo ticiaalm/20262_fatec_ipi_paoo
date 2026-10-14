@@ -49,5 +49,15 @@ app.post('/eventos', (req, res) => {
     res.end()
 })
 
+/* app.delete('/lembretes/:id', async (req, res) => {
+    const lembrete = req.body
+    delete lembretes[lembrete.id]
+    await axios.post('http://localhost:1000/eventos', {
+        tipo: 'LembreteDeletado',
+        dados: lembrete
+    })
+    res.json({mensagem: 'ok'})
+}) */
+
 const port = 4000
 app.listen(port, () => console.log(`Lembretes na porta ${port}.`))

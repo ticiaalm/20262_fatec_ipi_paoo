@@ -11,7 +11,10 @@ const funcoes = {
         const observacoes = baseConsulta[observacao.lembreteId]['observacoes'] || []
         observacoes.push(observacao)
         baseConsulta[observacao.lembreteId]['observacoes'] = observacoes
-    }
+    },
+    /* LembreteDeletado: (id) => {
+        delete baseConsulta[id]
+    } */
 }
 
 /* GET /lembretes */
