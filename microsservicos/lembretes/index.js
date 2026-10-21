@@ -44,8 +44,10 @@ app.get('/lembretes', function(req, res) {
 })
 
 app.post('/eventos', (req, res) => {
-    const evento = req.body
-    console.log(evento)
+    try {
+        const evento = req.body
+        console.log(evento)
+    } catch(e){}
     res.end()
 })
 

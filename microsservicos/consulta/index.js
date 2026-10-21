@@ -15,6 +15,11 @@ const funcoes = {
     /* LembreteDeletado: (id) => {
         delete baseConsulta[id]
     } */
+   ObservacaoAtualizada: (observacao) => {
+    const observacoes = baseConsulta[observacao.lembreteId]['observacoes']
+    const aux = observacoes.findIndex(o => o.id === observacao.id)
+    observacoes[aux] = observacao
+   }
 }
 
 /* GET /lembretes */
@@ -24,9 +29,12 @@ app.get('/lembretes', (req, res) => {
 
 /* POST /eventos */
 app.post('/eventos', function(req, res) {
-    const evento = req.body
-    console.log(evento)
-    funcoes[evento.tipo](evento.dados)
+    try {
+        const evento = req.body
+        console.log(evento)
+        funcoes[evento.tipo](evento.dados)
+    } catch(e){}
+    res.end()
 })
 
 const port = 6000

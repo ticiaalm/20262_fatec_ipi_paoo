@@ -4,32 +4,23 @@ const {v4: uuidv4} = require('uuid')
 const app = express()
 app.use(express.json())
 
-/* 
-{
-    1: [
-        {
-            id: 1001,
-            texto: 'Comprar café'
-            lembreteId: 1
-        },
-        {
-            id: 1002,
-            texto: 'Ir à feira',
-            lembreteId: 1
-        }    
-    ],
-    2: [
-        {
-            id: 2001,
-            texto: 'Ver um filme',
-            lembreteId: 2
-        }
-    ],
-    3: [
-        {}
-    ]    
+const funcoes = {
+    ObservacaoClassificada: (observacao) => {
+        const aux = observacoes[observacao.lembreteId]
+        const obsParaAtualizar = aux.find(o => o.id === observacao.id)
+        obsParaAtualizar.status = observacao.status
+        axios.post('http://localhost:10000/eventos', {
+            tipo: 'ObservacaoAtualizada',
+            dados: {
+                id: observacao.id,
+                texto: observacao.texto,
+                lembreteId: observacao.lembreteId,
+                status: observacao.status
+            }
+        })
+    }
 }
-*/
+
 const observacoes = {}
 
 /* POST /lembretes/1/observacoes */
@@ -40,16 +31,17 @@ app.post('/lembretes/:id/observacoes', async (req, res) => { // path
     const observacao = {
         id: idObs,
         texto: texto,
-        lembreteId: req.params.id
+        lembreteId: req.params.id,
+        status: 'Aguardando'
     }
     const observacoesDoLembrete = observacoes[req.params.id] || []
     observacoesDoLembrete.push(observacao)
     observacoes[req.params.id] = observacoesDoLembrete
-    res.json(observacoesDoLembrete)
     await axios.post('http://localhost:10000/eventos', {
         tipo: 'ObservacaoCriada',
         dados: observacao
     })
+    res.json(observacoesDoLembrete)
 })
 
 /* GET /lembretes/1/observacoes */
@@ -58,8 +50,11 @@ app.get('/lembretes/:id/observacoes', function(req, res) {
 })
 
 app.post('/eventos', (req, res) => {
-    const evento = req.body
-    console.log(evento)
+    try {
+        const evento = req.body
+        console.log(evento)
+        funcoes[evento.tipo](evento.dados)
+    } catch(e){}
     res.end()
 })
 
