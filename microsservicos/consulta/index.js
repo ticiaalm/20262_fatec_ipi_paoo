@@ -1,3 +1,4 @@
+const axios = require('axios')
 const express = require('express')
 const app = express()
 app.use(express.json())
@@ -38,4 +39,23 @@ app.post('/eventos', function(req, res) {
 })
 
 const port = 6000
-app.listen(port, () => console.log(`Consulta na porta ${port}.`))
+app.listen(port, async () => {
+    console.log(`Consulta na porta ${port}.`)
+    const tiposEspecificos = [
+        'LembreteCriado',
+        'ObservacaoCriada',
+        'ObservacaoAtualizada'
+    ]
+    try {
+        const resp = await axios.get('http://localhost:10000/eventos', {
+            params: {
+                tipos: tiposEspecificos.join(',')
+            }
+        })
+        resp.data.forEach((evento, indice, colecao) => {
+            try {
+                funcoes[evento.tipo](evento.dados)
+            } catch(e){}
+        })
+    } catch(e){}
+})
